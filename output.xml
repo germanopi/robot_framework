@@ -1,86 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.14.0 on win32)" generated="2025-10-12T09:05:18.552280" rpa="false" schemaversion="5">
-<suite id="s1" name="Primeiro-Teste" source="C:\Users\germa\Desktop\ROBOT\primeiro-teste.robot">
-<test id="s1-t1" name="Abrir o navegador e acesse o site do organo" line="6">
+<robot generator="Robot 7.3.2 (Python 3.14.0 on win32)" generated="2025-10-13T19:30:18.526587" rpa="false" schemaversion="5">
+<suite id="s1" name="Cadastro-Falha" source="C:\Users\germa\Desktop\ROBOT\cadastro-falha.robot">
+<test id="s1-t1" name="Verificar se quando um campo obrigatório não for preenchido corretamento o sistema exibe uma mensagem de campo obrigatório" line="12">
+<kw name="Dado que eu acesse o Organo" owner="main" type="SETUP">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-10-12T09:05:18.769155" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000/'.</msg>
+<msg time="2025-10-13T19:30:18.731637" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000/'.</msg>
 <arg>url=http://localhost:3000/</arg>
 <arg>browser=chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-10-12T09:05:18.768887" elapsed="2.299720"/>
+<status status="PASS" start="2025-10-13T19:30:18.731434" elapsed="2.276662"/>
 </kw>
-<status status="PASS" start="2025-10-12T09:05:18.767979" elapsed="2.301060"/>
-</test>
-<test id="s1-t2" name="Preencher os campos do formulário" line="9">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-12T09:05:21.070312" level="INFO">Typing text 'Pedro Ribero' into text field 'id=form-nome'.</msg>
-<arg>id=form-nome</arg>
-<arg>Pedro Ribero</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-12T09:05:21.069925" elapsed="0.087752"/>
+<status status="PASS" start="2025-10-13T19:30:18.730884" elapsed="2.277388"/>
 </kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-12T09:05:21.158353" level="INFO">Typing text 'Pjotinha' into text field 'id=form-cargo'.</msg>
-<arg>id=form-cargo</arg>
-<arg>Pjotinha</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-12T09:05:21.158083" elapsed="0.065689"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-12T09:05:21.224297" level="INFO">Typing text 'https://picsum.photos/200/300' into text field 'id=form-imagem'.</msg>
-<arg>id=form-imagem</arg>
-<arg>https://picsum.photos/200/300</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-12T09:05:21.224065" elapsed="0.063187"/>
-</kw>
+<kw name="Dado que eu clique no botão criar card">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-12T09:05:21.287772" level="INFO">Clicking element 'class=lista-suspensa'.</msg>
-<arg>class=lista-suspensa</arg>
+<msg time="2025-10-13T19:30:21.009251" level="INFO">Clicking element 'id=form-botao'.</msg>
+<arg>${BOTAO_CARD}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-12T09:05:21.287549" elapsed="0.052327"/>
+<status status="PASS" start="2025-10-13T19:30:21.008915" elapsed="0.059288"/>
 </kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-12T09:05:21.340455" level="INFO">Clicking element '//option[contains(.,'Programação')]'.</msg>
-<arg>//option[contains(.,'Programação')]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-12T09:05:21.340176" elapsed="0.024812"/>
+<status status="PASS" start="2025-10-13T19:30:21.008636" elapsed="0.059696"/>
 </kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-10-12T09:05:31.365741" level="INFO">Slept 10 seconds.</msg>
-<arg>10s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-10-12T09:05:21.365271" elapsed="10.000609"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-12T09:05:31.366457" level="INFO">Clicking element 'id=form-botao'.</msg>
-<arg>id=form-botao</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-12T09:05:31.366224" elapsed="0.045691"/>
+<kw name="Então sistema deve apresentar mensagem de campo obrigatório">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-10-13T19:30:21.083796" level="INFO">Element 'form-nome-erro' is displayed.</msg>
+<arg>form-nome-erro</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T19:30:21.068934" elapsed="0.014994"/>
 </kw>
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2025-10-12T09:05:31.428032" level="INFO">Element 'class=colaborador' is displayed.</msg>
-<arg>class=colaborador</arg>
+<msg time="2025-10-13T19:30:21.098316" level="INFO">Element 'form-cargo-erro' is displayed.</msg>
+<arg>form-cargo-erro</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-12T09:05:31.412227" elapsed="0.015912"/>
+<status status="PASS" start="2025-10-13T19:30:21.084107" elapsed="0.014382"/>
 </kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-10-12T09:05:36.428665" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-10-12T09:05:31.428409" elapsed="5.000395"/>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-10-13T19:30:21.110161" level="INFO">Element 'form-times-erro' is displayed.</msg>
+<arg>form-times-erro</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T19:30:21.098731" elapsed="0.011540"/>
 </kw>
-<status status="PASS" start="2025-10-12T09:05:21.069511" elapsed="15.359707"/>
+<status status="PASS" start="2025-10-13T19:30:21.068650" elapsed="0.041724"/>
+</kw>
+<kw name="Fechar o navegador" owner="main" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-10-13T19:30:21.111220" elapsed="2.098452"/>
+</kw>
+<status status="PASS" start="2025-10-13T19:30:21.110869" elapsed="2.098968"/>
+</kw>
+<status status="PASS" start="2025-10-13T19:30:18.730155" elapsed="4.479876"/>
 </test>
-<status status="PASS" start="2025-10-12T09:05:18.553711" elapsed="17.876233"/>
+<status status="PASS" start="2025-10-13T19:30:18.527997" elapsed="4.682729"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Primeiro-Teste" id="s1" pass="2" fail="0" skip="0">Primeiro-Teste</stat>
+<stat name="Cadastro-Falha" id="s1" pass="1" fail="0" skip="0">Cadastro-Falha</stat>
 </suite>
 </statistics>
 <errors>
