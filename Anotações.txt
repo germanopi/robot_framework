@@ -1,0 +1,48 @@
+Instalar o python adicionando no PATH
+Instalar o Node JS
+Instalar o robotframework   pip install robotframework
+Instalar a Selenium Library pip install --upgrade robotframework-seleniumlibrary
+Instalar o ChromeDriver e jogar na System32 (Faz a conexão entre selenium Library e o Chrome) 
+Instalar o Organo (Download + npm instala)
+Instalar o VS code 
+Instalar no VS code a extensão Robot Framework Language Server
+Instalar o FakerLibrary pip install robotframework-faker
+--------------
+npm start (abrir a página local do organo no browser)
+robot nome-do-arquivo.robot (executa)
+
+
+---------------------
+XPath é uma linguagem de consulta usada para selecionar elementos em um documento XML, que é a base do HTML. CSS Selector, por outro lado, é um método de seleção de elementos baseado em padrões definidos em uma folha de estilo em cascata (CSS). Ambas as técnicas podem ser usadas para localizar elementos em uma página HTML, mas cada uma tem abordagens diferentes.
+
+O XPath funciona navegando pelo documento XML como uma árvore hierárquica, identificando cada nó através de um caminho específico. Por exemplo, um caminho XPath que identifica um elemento específico pode ser algo como: //div[@id='meuId']/input[@name='meuNome']
+
+Isso significa que o elemento input com o atributo name igual a meuNome está dentro do elemento div com o atributo id igual a meuId. Para usar o XPath, é necessário ter uma boa compreensão da estrutura hierárquica do HTML.
+
+O CSS Selector, por outro lado, usa padrões de seleção definidos em uma folha de estilo em cascata para localizar elementos em uma página HTML. Veja alguns exemplos:
+
+Para selecionar um elemento com um ID específico, basta usar o seletor #meuId.
+Para selecionar um elemento com uma classe específica, podemos usar .minhaClasse.
+Para selecionar um elemento com um determinado atributo, usamos [atributo=valor].
+Há muitas opções para selecionar elementos usando CSS Selector, e é uma técnica amplamente utilizada na área de front-end.
+
+As duas técnicas podem ser usadas para localizar elementos em uma página HTML, e muitas ferramentas de automação de teste suportam as duas abordagens. É importante entender as diferenças entre XPath e CSS Selector para escolher a melhor abordagem para cada situação. Em geral, XPath é melhor para selecionar elementos em uma estrutura hierárquica complexa, enquanto CSS Selector é mais fácil de ler e entender para seleções simples.
+
+Durante a criação dos locators do nosso projeto, utilizamos as duas técnicas, quando criamos a variável para armazenar o locator do botão Criar card, nós utilizamos CSS Selector, informando como referência o id do elemento: 
+
+*** Variables ***
+${BOTAO_CARD}        id:form-botao
+
+Quando criamos a variável para armazenar as opções das equipes disponíveis, nós utilizamos XPath com o recurso “contains”, indicando que entre os elementos com a tag option queremos selecionar uma tag filha, fazemos isso utilizando como parâmetro o ., e em seguida informando o texto da opção que desejamos selecionar:
+
+${OPCAO_PROGRAMACAO}      //option[contains(.,'Programação')]
+${OPCAO_FRONT}                       //option[contains(.,'Front-End')]
+${OPCAO_DADOS}                     //option[contains(.,'Data Science')]
+${OPCAO_DEVOPS}                   //option[contains(.,'Devops')] 
+${OPCAO_UX}                            //option[contains(.,'UX e Design')]
+${OPCAO_MOBILE}               //option[contains(.,'Mobile')]
+${OPCAO_INOVACAO}         //option[contains(.,'Inovação e Gestão')]
+
+Em resumo, XPath e CSS Selector são duas técnicas para identificar elementos em uma página HTML. Cada uma delas têm suas próprias vantagens e desvantagens, e é importante escolher a técnica certa para cada situação.
+
+Com a prática e o conhecimento adequado, qualquer pessoa testadora pode se tornar especialista em localizar elementos.
