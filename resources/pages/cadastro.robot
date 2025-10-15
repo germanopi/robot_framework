@@ -1,9 +1,7 @@
-*** Settings ***  # Esse comando define as configurações do arquivo    
-Library  SeleniumLibrary  # Importa a biblioteca SeleniumLibrary para automação web 
-Library  FakerLibrary  locale=pt_BR  # Importa a biblioteca FakerLibrary para geração de massa de dados falsos para testes
-Resource  main.robot  # Importa o arquivo main.robot para reutilizar palavras-chave (keywords) e variáveis
-Test Setup    Dado que eu acesse o Organo  # Define a ação que será realizada antes de cada teste definida no main.robot
-Test Teardown    Fechar o navegador  # Define a ação que será realizada após cada teste definida no main.robot
+# Esse arquivo contem as palavras-chave (keywords) e variáveis relacionadas à página de cadastro
+
+*** Settings ***
+Resource     ../main.robot     # Importa o arquivo main.robot para utilizar suas Livrarias e recursos 
 
 *** Variables ***     # Inicio da seção de variáveis
 ${CAMPO_NOME}             id=form-nome               # Define a variável ${CAMPO_NOME}
@@ -11,6 +9,7 @@ ${CAMPO_CARGO}            id=form-cargo              # Define a variável ${CAMP
 ${CAMPO_IMAGEM}           id=form-imagem             # Define a variável ${CAMPO_IMAGEM}
 ${CAMPO_TIME}             class=lista-suspensa       # Define a variável ${CAMPO_TIME}
 ${BOTAO_CARD}             id=form-botao              # Define a variável ${BOTAO_CARD}
+${CARD_COLABORADOR}       class=colaborador          # Define a variável ${CARD_COLABORADOR} para verificar se o card foi criado
 @{LISTA_DE_SELEÇÃO_DE_TIMES}                         # Define uma lista de variáveis para as opções do menu suspenso
 ...    //option[contains(.,'Programação')]     # Primeiro item da lista
 ...    //option[contains(.,'Front-End')]       # Segundo item da lista
@@ -19,25 +18,6 @@ ${BOTAO_CARD}             id=form-botao              # Define a variável ${BOTA
 ...    //option[contains(.,'UX e Design')]     # Quinto item da lista
 ...    //option[contains(.,'Mobile')]          # Sexto item da lista
 ...    //option[contains(.,'Inovação e Gestão')]     # Define a variável ${OPCAO_INOVACAO}
-${CARD_COLABORADOR}        class=colaborador
-
-
-*** Test Cases ***  # Início da seção de casos de teste
-Verificar se ao preencher os campos do formulário corretamento os dados são inseridos na lista e se um novo card é criado no time esperado  # Nome do caso de teste
-    # Caso de teste escrito em Gherking que em cada linha chama as palavras-chave (keywords) que realizam as ações
-    Dado que eu preencha os campos de formulário
-    E clique no botão criar card
-    Então indentificar se o card foi criado no time correto
-
-Verificar se é possivel criar mais de um card se preencher os campos corretamente
-    # Caso de teste escrito em Gherking que em cada linha chama as palavras-chave (keywords) que realizam as ações
-    Dado que eu preencha os campos de formulário
-    E clique no botão criar card
-    Então identificar 3 cards no time esperado
-
-Verificar se é possivel criar um card para cada time disponivel se preencher os campos corretamente 
-    Dado que eu preencha os campos de formulário
-    Então criar e identificar um card em cada time disponivel 
 
 *** Keywords ***  # Início da seção de palavras-chave (keywords)
     
@@ -72,3 +52,11 @@ Então criar e identificar um card em cada time disponivel
         Click Element    ${time}     # Clica na opção do time atual no loop 
         E clique no botão criar card
     END
+
+Dado que eu clique no botão criar card
+    Click Element   ${BOTAO_CARD}   # Clica no botão "Criar Card" para enviar o formulário
+
+Então sistema deve apresentar mensagem de campo obrigatório
+    Element Should Be Visible    form-nome-erro       # Sem usar locator id porque só vai usar uma vez então escrito direto de forma estática
+    Element Should Be Visible    form-cargo-erro       # Sem usar locator id porque só vai usar uma vez então escrito direto de forma estática
+    Element Should Be Visible    form-times-erro       # Sem usar locator id porque só vai usar uma vez então escrito direto de forma estática

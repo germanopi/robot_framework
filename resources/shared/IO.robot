@@ -1,5 +1,7 @@
+
+# Esse arquivo contem as keywords que serão utilizadas antes e após cada teste
 *** Settings ***  # Esse comando define as configurações do arquivo    
-Library  SeleniumLibrary  # Importa a biblioteca SeleniumLibrary para automação web
+Resource  ../main.robot  # Importa o arquivo main.robot para reutilizar palavras-chave (keywords) e variáveis os . servem para sair da pasta atual e .. para voltar outra pasta
 
 *** Keywords ***  # Início da seção de palavras-chave (keywords)
 Dado que eu acesse o Organo 
